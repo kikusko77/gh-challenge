@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  issues-cli:
+    build:
+      context: .
+      dockerfile: app-cli/Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - SPREADSHEET_ID=${SPREADSHEET_ID}
+      - SHEET_NAME=${SHEET_NAME:-issues}
+      - GOOGLE_APPLICATION_CREDENTIALS=/run/secrets/sa.json
+    volumes:
+      - ./secrets/sa.json:/run/secrets/sa.json:ro
+    stdin_open: true
+    tty: true

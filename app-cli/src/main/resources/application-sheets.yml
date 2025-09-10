@@ -1,0 +1,14 @@
+spring:
+  config:
+    activate:
+      on-profile: sheets
+
+sheets:
+  spreadsheet-id: ${SPREADSHEET_ID}
+  sheet-name: ${SHEET_NAME:issues}
+  credentials-path: ${GOOGLE_APPLICATION_CREDENTIALS}
+
+issues:
+  adapter: sheets
+  id-prefix: ${APP_ID_PREFIX:AD-}
+  timezone: ${APP_TIMEZONE:UTC}

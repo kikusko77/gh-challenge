@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info: { title: Issues Contract, version: 1.0.0 }
+components:
+  schemas:
+    Status:
+      type: string
+      enum: [OPEN, IN_PROGRESS, CLOSED]
+    CreateIssueRequestDTO:
+      type: object
+      required: [description]
+      properties:
+        description: { type: string, minLength: 1 }
+        parentId:   { type: string, nullable: true }
+    UpdateStatusRequestDTO:
+      type: object
+      required: [id, status]
+      properties:
+        id:     { type: string }
+        status: { $ref: '#/components/schemas/Status' }
+    IssueViewDTO:
+      type: object
+      required: [id, description, status, createdAt, updatedAt]
+      properties:
+        id:         { type: string }
+        description: { type: string }
+        parentId:   { type: string, nullable: true }
+        status:     { $ref: '#/components/schemas/Status' }
+        createdAt:  { type: string, format: date-time }
+        updatedAt:  { type: string, format: date-time }

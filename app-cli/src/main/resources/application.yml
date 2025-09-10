@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: issues-cli
+  main:
+    web-application-type: none
+    banner-mode: "off"
+  docker:
+    compose:
+          enabled: false
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+
+picocli:
+  enabled: true
+  execution:
+    strategy: run
+
+issues:
+  id-prefix: ${APP_ID_PREFIX:AD-}
+  timezone: ${APP_TIMEZONE:UTC}
+
